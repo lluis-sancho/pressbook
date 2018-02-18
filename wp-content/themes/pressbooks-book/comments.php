@@ -1,0 +1,61 @@
+<div id="comments">
+<?php if ( post_password_required() ) : ?>
+				<p class="nopassword"><?php _e( 'This post is password protected. Enter the password to view any comments.', 'pressbooks-book' ); ?></p>
+			</div><!-- #comments -->
+<?php
+		return;
+	endif;
+?>
+
+<?php if ( have_comments() ) : ?>
+			<h3 id="comments-title">
+			<?php printf( // WPCS: XSS OK.
+				esc_html(
+					_nx(
+						'%1$d Response to %2$s',
+						'%1$d Responses to %2$s',
+						get_comments_number(),
+						'comments title',
+						'pressbooks'
+					)
+				),
+				number_format_i18n( get_comments_number() ),
+				'<em>' . get_the_title() . '</em>'
+			);
+			?></h3>
+
+<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // Are there comments to navigate through? ?>
+			<div class="navigation">
+				<div class="nav-previous"><?php previous_comments_link( __( '<span class="meta-nav">&larr;</span> Older Comments', 'pressbooks-book' ) ); ?></div>
+				<div class="nav-next"><?php next_comments_link( __( 'Newer Comments <span class="meta-nav">&rarr;</span>', 'pressbooks-book' ) ); ?></div>
+			</div> <!-- .navigation -->
+<?php endif; // check for comment navigation ?>
+
+			<ol class="commentlist">
+				<?php wp_list_comments( [ 'callback' => 'pressbooks_comment' ] ); ?>
+			</ol>
+
+<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // Are there comments to navigate through? ?>
+			<div class="navigation">
+				<div class="nav-previous"><?php previous_comments_link( __( '<span class="meta-nav">&larr;</span> Older Comments', 'pressbooks-book' ) ); ?></div>
+				<div class="nav-next"><?php next_comments_link( __( 'Newer Comments <span class="meta-nav">&rarr;</span>', 'pressbooks-book' ) ); ?></div>
+			</div><!-- .navigation -->
+<?php endif; // check for comment navigation ?>
+
+<?php else : // or, if we don't have comments:
+	if ( ! comments_open() ) :
+?>
+	<p class="nocomments"><?php _e( 'Comments are closed.', 'pressbooks-book' ); ?></p>
+<?php endif; ?>
+
+<?php endif; ?>
+
+<?php
+/* Comment form submit text*/
+$comments_args = [
+		'label_submit' => __( 'Submit', 'pressbooks-book' ),
+];
+
+comment_form( $comments_args ); ?>
+
+</div><!-- #comments -->
