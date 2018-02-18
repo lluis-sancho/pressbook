@@ -1,4 +1,3 @@
-<div id="post_name"><?php echo $page["post_name"]; ?></div>
     <?php edit_post_link( __( 'Edit', 'pressbooks-book' ), '<span class="edit-link">', '</span>' ); ?>
 		<?php
 		// add part title to chapters
@@ -18,7 +17,7 @@
 		echo "<span>$chapter_number</span>  ";
 	}
 		#the_title();
-		$page["post_name"]
+		echo $page["post_name"]
 		?></h2>
 			<?php pb_get_links(); ?>
 		<div id="post-<?php the_ID(); ?>" <?php post_class( pb_get_section_type( $page ) ); ?>>
