@@ -150,6 +150,93 @@ if ( wp_title( '', false ) !== '' ) { print ' id="' . str_replace( ' ', '', strt
 		</div> <!-- end .nav-container -->
 
 <div class="main-content" id="sb-site" style="min-height: 360px;">		
-	<div id="book-container" class="book-container showBook" style="width: 1276px; height: 360px;">
+	<div id="book-container" class="book-container showBook" style="width: 1276px; height: 360px;     margin-top: 40px;">
+		<div class="menu-panel">
+			<h3> <?php  _e( 'Table of Contents', 'pressbooks-book' ) ?></h3>
+			<ul id="menu-toc" class="menu-toc">
+						<!-- Pop out TOC only on READ pages -->
+		<?php if ( is_single() ) : ?>
+		<?php $book = pb_get_book_structure(); ?>
+						<?php foreach ( $book['front-matter'] as $fm ) : ?>
+						<?php if ( $fm['post_status'] !== 'publish' ) {
+							if ( ! current_user_can_for_blog( $blog_id, 'read_private_posts' ) ) {
+								if ( current_user_can_for_blog( $blog_id, 'read' ) ) {
+									if ( absint( get_option( 'permissive_private_content' ) ) !== 1 ) { continue; // Skip
+									}
+								} elseif ( ! current_user_can_for_blog( $blog_id, 'read' ) ) {
+									 continue; // Skip
+								}
+							}
+} ?>
+						<li class="front-matter <?php echo pb_get_section_type( get_post( $fm['ID'] ) ) ?>"><a href="#item1"><?php echo pb_strip_br( $fm['post_title'] );?></a>
+				<?php if ( pb_should_parse_subsections() ) {
+					$sections = pb_get_subsections( $fm['ID'] );
+					if ( $sections ) {
+						  $s = 1; ?>
+							<?php foreach ( $sections as $id => $name ) { ?>
+					  <li class="section"><a href="#item1"><?php echo $name; ?></a></li>
+					<?php } ?>
+						<?php }
+} ?>
+						</li>
+						<?php endforeach; ?>
+				<?php foreach ( $book['part'] as $part ) :?>
+				<li><?php if ( count( $book['part'] ) > 1 && get_post_meta( $part['ID'], 'pb_part_invisible', true ) !== 'on' ) { ?>
+				<?php if ( $part['has_post_content'] ) { ?><a href="#item1"><?php } ?>
+				<?php echo $part['post_title']; ?>
+				<?php if ( $part['has_post_content'] ) { ?></a><?php } ?>
+				<?php } ?></li>
+						<?php foreach ( $part['chapters'] as $chapter ) : ?>
+							<?php if ( $chapter['post_status'] !== 'publish' ) {
+								if ( ! current_user_can_for_blog( $blog_id, 'read_private_posts' ) ) {
+									if ( current_user_can_for_blog( $blog_id, 'read' ) ) {
+										if ( absint( get_option( 'permissive_private_content' ) ) !== 1 ) { continue; // Skip
+										}
+									} elseif ( ! current_user_can_for_blog( $blog_id, 'read' ) ) {
+										 continue; // Skip
+									}
+								}
+} ?>
+							<li class="chapter <?php echo pb_get_section_type( get_post( $chapter['ID'] ) );?>"><a href="#item1">
+								<?php echo pb_strip_br( $chapter['post_title'] ); ?></a>
+				<?php if ( pb_should_parse_subsections() ) {
+					$sections = pb_get_subsections( $chapter['ID'] );
+					if ( $sections ) {
+						$s = 1; ?>
+							<?php foreach ( $sections as $id => $name ) { ?>
+						<li class="section"><a href="#item1"><?php echo $name; ?></a></li>
+						<?php } ?>
+						<?php }
+} ?>
+							</li>
+						<?php endforeach; ?>
+				<?php endforeach; ?>
+						<?php foreach ( $book['back-matter'] as $bm ) : ?>
+						<?php if ( $bm['post_status'] !== 'publish' ) {
+							if ( ! current_user_can_for_blog( $blog_id, 'read_private_posts' ) ) {
+								if ( current_user_can_for_blog( $blog_id, 'read' ) ) {
+									if ( absint( get_option( 'permissive_private_content' ) ) !== 1 ) { continue; // Skip
+									}
+								} elseif ( ! current_user_can_for_blog( $blog_id, 'read' ) ) {
+									 continue; // Skip
+								}
+							}
+} ?>
+						<li class="back-matter <?php echo pb_get_section_type( get_post( $bm['ID'] ) ) ?>"><a href="#item1"><?php echo pb_strip_br( $bm['post_title'] );?></a>
+				<?php if ( pb_should_parse_subsections() ) {
+					$sections = pb_get_subsections( $bm['ID'] );
+					if ( $sections ) {
+						  $s = 1; ?>
+							<?php foreach ( $sections as $id => $name ) { ?>
+					  <li class="section"><a href="#item1"><?php echo $name; ?></a></li>
+					<?php } ?>
+						<?php }
+} ?>
+						</li>
+						<?php endforeach; ?>
+		<?php endif; ?>
+			</ul>
 
+
+		</div>
 		<?php endif; ?>

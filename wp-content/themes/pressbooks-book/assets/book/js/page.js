@@ -5,10 +5,7 @@ jQuery(document).ready(function($) {
 	/**
 	* AJAX Success.
 	*/
-	alert("hola")
-
 	
-
 		var Page = (function() {
 
 			var $container = $( '#book-container' ),

@@ -12,7 +12,7 @@ if( !defined('FIRST_RENDERED') ){
 							<div class="jspPane" style="padding: 0px; width: 1267px; top: -144px;">
 								<div class="scroller">
 
-    <?php edit_post_link( __( 'Edit', 'pressbooks-book' ), '<span class="edit-link">', '</span>' ); ?>
+    <?php edit_post_link( __( 'Edit', 'pressbooks-book' ), '<span class="edit-link">', '</span>',$page["ID"]  ); ?>
 		<?php
 		// add part title to chapters
 		$web_options = get_option( 'pressbooks_theme_options_web' );
