@@ -1,3 +1,17 @@
+<?php
+$first = false;
+if( !defined('FIRST_RENDERED') ){
+    $first = true;
+    define('FIRST_RENDERED', TRUE);
+}
+?>
+<div class="bb-item" id="item<?php echo $page["ID"];	 ?>" style="display: <?php echo $first ? 'block' : 'none'; ?>;">
+				<div class="book-content jspScrollable" tabindex="0" style="overflow: hidden; padding: 0px; width: 1276px; outline: none;">
+					
+					<div class="jspContainer" style="width: 1276px; height: 250px;">
+							<div class="jspPane" style="padding: 0px; width: 1267px; top: -144px;">
+								<div class="scroller">
+
     <?php edit_post_link( __( 'Edit', 'pressbooks-book' ), '<span class="edit-link">', '</span>' ); ?>
 		<?php
 		// add part title to chapters
@@ -11,18 +25,18 @@
 			}
 		}
 		?>
-	<h2 class="entry-title"><?php
+	<h1 class="chapter-heading"><?php
 	$chapter_number = pb_get_chapter_number( $page["post_name"] );
 	if ( $chapter_number ) {
 		echo "<span>$chapter_number</span>  ";
 	}
 		#the_title();
 		echo $page["post_name"]
-		?></h2>
+		?></h1>
 			<?php pb_get_links(); ?>
-		<div id="post-<?php the_ID(); ?>" <?php post_class( pb_get_section_type( $page ) ); ?>>
+		<!--<div id="post-<?php the_ID(); ?>" <?php post_class( pb_get_section_type( $page ) ); ?>> -->
 
-			<div class="entry-content">
+			<!-- <div class="entry-content"> -->
 				
 				<?php $subtitle = get_post_meta( $page["ID"], 'pb_subtitle', true );
 				if ( $subtitle ) : ?>
@@ -54,6 +68,21 @@
 		echo apply_filters( 'the_content', $content);
 	} ?>
 
-	</div><!-- .entry-content -->
-</div><!-- #post-## -->
+	<!--</div> .entry-content -->
+<!--</div> #post-## -->
 <hr>
+</div>
+</div>
+						<div class="jspVerticalBar">
+							<div class="jspCap jspCapTop"></div>
+								<div class="jspTrack" style="height: 170px;">
+									<div class="jspDrag" style="height: 51px; top: 27.5261px;">
+										<div class="jspDragTop"></div>
+										<div class="jspDragBottom"></div>
+									</div>
+								</div>
+							<div class="jspCap jspCapBottom"></div>
+						</div>
+				</div>
+			</div>
+		</div><!-- end bb-item -->

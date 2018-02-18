@@ -1,7 +1,5 @@
 <?php if ( ! is_single() ) {?>
 
-	</div><!-- #content -->
-
 <?php } ?>
 <?php if ( ! is_front_page() ) {?>
 

@@ -6,9 +6,21 @@
 			    		<!-- set_query_var( 'page', $page );
 				    echo "hola";
 				    get_template_part( 'item_book'); -->
+<div class="bb-custom-wrapper" style="width: 1276px; height: 360px;">
+	<div id="bb-bookblock" class="bb-bookblock" style="perspective: 2000px; width: 1276px; height: 360px;">
+		<nav>
+		<span id="bb-nav-prev" style="display: none;">←</span>
+		<span id="bb-nav-next" style="display: block;">→</span>
+	</nav>
+
+	<span id="tblcontents" class="menu-button">Table of Contents</span>
+
+	<span class="bb-nav-close"><i class="fa fa-times"></i></span>
+
 			<?php
 				$book_structure = pb_get_book_structure();
 				#print_r($book_structure);
+
 				foreach ( $book_structure["front-matter"] as $page )
 				{ 
 					set_query_var( 'page', $page );
@@ -39,7 +51,8 @@
 					get_template_part( 'new_item');    
 				} ?> <!-- foreach -->
 						
-
+</div><!-- #bb-bookblock -->
+</div><!-- #bb-custom-wrapper -->
 
 		</div><!-- #content -->
 				<?php
@@ -55,6 +68,4 @@
 <?php get_footer(); ?>
 <?php endwhile;
 };?>
-<script>
 
-	</script>
