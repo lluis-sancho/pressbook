@@ -6,11 +6,7 @@ if( !defined('FIRST_RENDERED') ){
 }
 ?>
 <div class="bb-item <?php echo get_the_ID() === $page["ID"] ? ' actived_manually' : '' ?>" id="item<?php echo $page["ID"];	 ?>" style="display: <?php  echo (get_the_ID() === $page["ID"] && !$first ? 'block' : 'none'); ?>;">
-				<div class="book-content jspScrollable" tabindex="0" style="overflow: hidden; padding: 0px; width: 1276px; outline: none;">
-					
-					<div class="jspContainer" style="width: 100%; height: 250px;">
-							<div class="jspPane" style="padding: 0px; width: 100%; top: -144px;">
-								<div class="scroller">
+				<div class="book-content " tabindex="0">
 
     <?php edit_post_link( __( 'Edit', 'pressbooks-book' ), '<span class="edit-link">', '</span>',$page["ID"]  ); ?>
 		<?php
@@ -70,19 +66,5 @@ if( !defined('FIRST_RENDERED') ){
 
 	<!--</div> .entry-content -->
 <!--</div> #post-## -->
-<hr>
 </div>
-</div>
-						<div class="jspVerticalBar">
-							<div class="jspCap jspCapTop"></div>
-								<div class="jspTrack" style="height: 170px;">
-									<div class="jspDrag" style="height: 51px; top: 27.5261px;">
-										<div class="jspDragTop"></div>
-										<div class="jspDragBottom"></div>
-									</div>
-								</div>
-							<div class="jspCap jspCapBottom"></div>
-						</div>
-				</div>
-			</div>
 		</div><!-- end bb-item -->

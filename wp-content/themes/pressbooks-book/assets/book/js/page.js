@@ -44,9 +44,9 @@ jQuery(document).ready(function($) {
 						// updateNavigation
 						updateNavigation( isLimit );
 						// initialize jScrollPane on the content div for the new item
-						setJSP( 'init' );
+						//setJSP( 'init' );
 						// destroy jScrollPane on the content div for the old item
-						setJSP( 'destroy', old );
+						//setJSP( 'destroy', old );
 
 					}
 				} ),
@@ -68,7 +68,7 @@ jQuery(document).ready(function($) {
 			function init() {
 
 				// initialize jScrollPane on the content div of the first item
-				setJSP( 'init' );
+				//setJSP( 'init' );
 				initEvents();
 
 			}
@@ -125,7 +125,7 @@ jQuery(document).ready(function($) {
 				// reinit jScrollPane on window resize
 				$( window ).on( 'debouncedresize', function() {
 					// reinitialise jScrollPane on the content div
-					setJSP( 'reinit' );
+					//setJSP( 'reinit' );
 				} );
 
 			}

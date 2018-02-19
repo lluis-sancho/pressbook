@@ -5913,14 +5913,14 @@ blockquote {
  * ----------------------------------------------------------------------------------------
  */
 .book-container {
-  position: fixed;
+  position: aboslute;
   top: 0;
   left: 0;
   transition: left 0.3s ease-in-out;
   z-index: 1000; }
 
 .slideRight {
-  left: 240px; }
+  margin-left: 240px; }
 
 .no-js .book-container {
   padding-left: 240px; }
@@ -6060,7 +6060,8 @@ blockquote {
   left: 0;
   width: 100%;
   bottom: 50px;
-  overflow: hidden;
+  /*overflow: hidden;*/
+  padding: 10px 20% 10px 20%;
   -webkit-font-smoothing: subpixel-antialiased; }
 
 .scroller {
