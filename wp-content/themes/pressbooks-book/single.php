@@ -9,7 +9,7 @@
 <div class="bb-custom-wrapper" style="width: 1276px; height: 360px;">
 	<div id="bb-bookblock" class="bb-bookblock" style="perspective: 2000px; width: 1276px; height: 360px;">
 		<nav>
-		<span id="bb-nav-prev" style="display: none;">←</span>
+		<span id="bb-nav-prev" style="display: block;">←</span>
 		<span id="bb-nav-next" style="display: block;">→</span>
 	</nav>
 

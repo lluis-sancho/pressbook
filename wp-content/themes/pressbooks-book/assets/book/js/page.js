@@ -5,7 +5,9 @@ jQuery(document).ready(function($) {
 	/**
 	* AJAX Success.
 	*/
-	
+	$('#book-container').addClass('showBook');
+		resizeBook();
+		$(window).trigger('debouncedresize');
 		var Page = (function() {
 
 			var $container = $( '#book-container' ),
@@ -13,9 +15,23 @@ jQuery(document).ready(function($) {
 				// $items = $bookBlock.children(),
 				// itemsCount = $items.length,
 				$items = $bookBlock.children(),
-				itemsCount = $items.length,
-				current = 0,
-				bb = $( '#bb-bookblock' ).bookblock( {
+				$navNext = $( '#bb-nav-next' ),
+				$navPrev = $( '#bb-nav-prev' ),
+				itemsCount = $items.length;
+				var actived_manually = document.getElementsByClassName('actived_manually')
+				if(actived_manually.length > 0){
+						for (var i = 0, len = itemsCount; i < len; i++) {
+					  if($items[i].id == actived_manually[0].id){
+							var current = i;
+							if(i==0){$navPrev.hide()}
+						}
+					}
+				}
+				else{
+					var current = 0;
+				}
+
+				var bb = $( '#bb-bookblock' ).bookblock( {
 					speed : 800,
 					perspective : 2000,
 					shadowSides	: 0.8,
@@ -34,8 +50,7 @@ jQuery(document).ready(function($) {
 
 					}
 				} ),
-				$navNext = $( '#bb-nav-next' ),
-				$navPrev = $( '#bb-nav-prev' ).hide(),
+				
 				$menuItems = $container.find( 'ul.menu-toc > li' ),
 				$tblcontents = $( '#tblcontents' ),
 				transEndEventNames = {

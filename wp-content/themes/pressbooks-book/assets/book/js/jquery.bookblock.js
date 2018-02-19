@@ -120,11 +120,32 @@
 			// total items
 			this.itemsCount = this.$items.length;
 			// current item's index
-			this.current = 0;
+			var actived_manually = document.getElementsByClassName('actived_manually')
+			if(actived_manually.length > 0){
+					for (var i = 0, len = this.$items.length; i < len; i++) {
+				  if(this.$items[i].id == actived_manually[0].id){
+						this.current = i;
+						if(i>0){
+							this.previous = i - 1;
+						}
+						else{
+							this.previous = -1;
+						}
+					}
+				}
+			}
+			else{
+				this.current = 0;
+				this.previous = -1;
+			}
+				
 			// previous item's index
-			this.previous = -1;
+			
 			// show first item
 			this.$current = this.$items.eq(this.current).show();
+			console.log(this.current)
+			console.log(this.previous)
+
 			// get width of this.$el
 			// this will be necessary to create the flipping layout
 			this.elWidth = this.$el.width();

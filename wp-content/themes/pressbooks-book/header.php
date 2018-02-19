@@ -45,7 +45,7 @@ wp_register_script( 'modernizr', get_template_directory_uri() . '/assets/book/js
 		wp_register_script( 'jscrollpane', get_template_directory_uri() . '/assets/book/js/jquery.jscrollpane.min.js', 'jquery', 1.0, true );
 		wp_register_script( 'jquerypp', get_template_directory_uri() . '/assets/book/js/jquerypp.custom.js', 'jquery', 1.0, true );
 		wp_register_script( 'bookblock', get_template_directory_uri() . '/assets/book/js/jquery.bookblock.js', 'jquery', 1.0, true );
-		wp_register_script( 'page', get_template_directory_uri() . '/assets/book/js/page.js', 'jquery', 1.0, true );
+		wp_register_script( 'page', get_template_directory_uri() . '/assets/book/js/page.js', 'jquery', 1.11, true );
 		wp_register_script( 'owl', get_template_directory_uri() . '/assets/book/js/owl.carousel.min.js', 'jquery', 1.0, true );
 		wp_register_script( 'supersized', get_template_directory_uri() . '/assets/book/js/supersized.3.2.7.min.js', 'jquery', 1.0 );
 		wp_register_script( 'sidebar', get_template_directory_uri() . '/assets/book/js/slidebars.min.js', 'jquery', 1.0, true );
@@ -150,7 +150,7 @@ if ( wp_title( '', false ) !== '' ) { print ' id="' . str_replace( ' ', '', strt
 		</div> <!-- end .nav-container -->
 
 <div class="main-content" id="sb-site" style="min-height: 360px;">		
-	<div id="book-container" class="book-container showBook" style="width: 1276px; height: 360px;     margin-top: 40px;">
+	<div id="book-container" class="book-container" style="margin-top: 40px;">
 		<div class="menu-panel">
 			<h3> <?php  _e( 'Table of Contents', 'pressbooks-book' ) ?></h3>
 			<ul id="menu-toc" class="menu-toc">
@@ -168,7 +168,7 @@ if ( wp_title( '', false ) !== '' ) { print ' id="' . str_replace( ' ', '', strt
 								}
 							}
 } ?>
-						<li class="front-matter <?php echo pb_get_section_type( get_post( $fm['ID'] ) ) ?>"><a href="#item1"><?php echo pb_strip_br( $fm['post_title'] );?></a>
+						<li class="front-matter <?php echo pb_get_section_type( get_post( $fm['ID'] ) ); echo (get_the_ID() === $fm['ID'] ? ' menu-toc-current' : '');  ?>"><a href="#item1"><?php echo pb_strip_br( $fm['post_title'] );?></a>
 				<?php if ( pb_should_parse_subsections() ) {
 					$sections = pb_get_subsections( $fm['ID'] );
 					if ( $sections ) {

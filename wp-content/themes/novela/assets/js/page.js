@@ -5,7 +5,6 @@ jQuery(document).ready(function($) {
 	/**
 	* AJAX Success.
 	*/
-
 	function ajaxSuccess(html){
 		$( '#book-container' ).remove()
 		$('.main-content').prepend(html);

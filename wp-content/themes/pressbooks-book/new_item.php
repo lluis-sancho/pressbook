@@ -5,11 +5,11 @@ if( !defined('FIRST_RENDERED') ){
     define('FIRST_RENDERED', TRUE);
 }
 ?>
-<div class="bb-item" id="item<?php echo $page["ID"];	 ?>" style="display: <?php echo $first ? 'block' : 'none'; ?>;">
+<div class="bb-item <?php echo get_the_ID() === $page["ID"] ? ' actived_manually' : '' ?>" id="item<?php echo $page["ID"];	 ?>" style="display: <?php  echo (get_the_ID() === $page["ID"] && !$first ? 'block' : 'none'); ?>;">
 				<div class="book-content jspScrollable" tabindex="0" style="overflow: hidden; padding: 0px; width: 1276px; outline: none;">
 					
-					<div class="jspContainer" style="width: 1276px; height: 250px;">
-							<div class="jspPane" style="padding: 0px; width: 1267px; top: -144px;">
+					<div class="jspContainer" style="width: 100%; height: 250px;">
+							<div class="jspPane" style="padding: 0px; width: 100%; top: -144px;">
 								<div class="scroller">
 
     <?php edit_post_link( __( 'Edit', 'pressbooks-book' ), '<span class="edit-link">', '</span>',$page["ID"]  ); ?>
