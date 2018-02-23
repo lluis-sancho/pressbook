@@ -37,50 +37,30 @@ if ( $paged >= 2 || $page >= 2 ) {
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 
 <?php wp_head(); ?>
-<?php #wp_enqueue_script( 'script', get_template_directory_uri() . '/assets/book/js/page.js'); ?>
-<?php 
-wp_register_script( 'modernizr', get_template_directory_uri() . '/assets/book/js/modernizr.custom.79639.js', 'jquery', 1.0 );
-		wp_register_script( 'bootstrap', get_template_directory_uri() . '/assets/book/js/bootstrap.min.js', 'jquery', 1.0, true );
-		wp_register_script( 'mousewheel', get_template_directory_uri() . '/assets/book/js/jquery.mousewheel.js', 'jquery', 1.0, true );
-		wp_register_script( 'jscrollpane', get_template_directory_uri() . '/assets/book/js/jquery.jscrollpane.min.js', 'jquery', 1.0, true );
-		wp_register_script( 'jquerypp', get_template_directory_uri() . '/assets/book/js/jquerypp.custom.js', 'jquery', 1.0, true );
-		wp_register_script( 'bookblock', get_template_directory_uri() . '/assets/book/js/jquery.bookblock.js', 'jquery', 1.0, true );
-		wp_register_script( 'page', get_template_directory_uri() . '/assets/book/js/page.js', 'jquery', 1.11, true );
-		wp_register_script( 'owl', get_template_directory_uri() . '/assets/book/js/owl.carousel.min.js', 'jquery', 1.0, true );
-		wp_register_script( 'supersized', get_template_directory_uri() . '/assets/book/js/supersized.3.2.7.min.js', 'jquery', 1.0 );
-		wp_register_script( 'sidebar', get_template_directory_uri() . '/assets/book/js/slidebars.min.js', 'jquery', 1.0, true );
-		wp_register_script( 'isotope', get_template_directory_uri() . '/assets/book/js/isotope.pkgd.min.js', 'jquery', 1.0, true );
-		wp_register_script( 'debouncedresize', get_template_directory_uri() . '/assets/book/js/jquery.debouncedresize.js', 'jquery', 1.0, true );
-		wp_register_script( 'imagesloaded', get_template_directory_uri() . '/assets/book/js/imagesloaded.pkgd.min.js', 'jquery', 1.0, true );
-		wp_register_script( 'validation', get_template_directory_uri() . '/assets/book/js/jquery.validate.min.js', 'jquery', 1.0, true );
-		wp_register_script( 'custom', get_template_directory_uri() . '/assets/book/js/scripts.js', 'jquery', '1.0', 1.0, true );
+    <link rel="stylesheet" href="<?php bloginfo( 'template_directory' ); ?>/assets/book/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="<?php bloginfo( 'template_directory' ); ?>/assets/book/css/jquery.jscrollpane.custom.css" />
+    <link rel="stylesheet" href="<?php bloginfo( 'template_directory' ); ?>/assets/book/css/bookblock.css" />
+    <link rel="stylesheet" href="<?php bloginfo( 'template_directory' ); ?>/assets/book/css/owl.carousel.css" />
+    <link rel="stylesheet" href="<?php bloginfo( 'template_directory' ); ?>/assets/book/css/supersized.css" />
+    <link rel="stylesheet" href="<?php bloginfo( 'template_directory' ); ?>/assets/book/css/slidebars.min.css" />
+    <link rel="stylesheet" href="<?php bloginfo( 'template_directory' ); ?>/assets/book/css/master.css?id=33" />
 
-		wp_enqueue_script('jquery');
-		wp_enqueue_script('modernizr');
-		wp_enqueue_script('bootstrap');
-		wp_enqueue_script('mousewheel');
-		wp_enqueue_script('jscrollpane');
-		wp_enqueue_script('jquerypp');
-		wp_enqueue_script('bookblock');
-		wp_enqueue_script('page');
-		wp_enqueue_script('owl');
-		wp_enqueue_script('supersized');
-		wp_enqueue_script('sidebar');
-		wp_enqueue_script('isotope');
-		wp_enqueue_script('debouncedresize');
-		wp_enqueue_script('imagesloaded');
-		wp_enqueue_script('custom');
+    <script src="<?php bloginfo('template_directory'); ?>/assets/book/js/modernizr.custom.79639.js"> </script>
+    <script src="<?php bloginfo('template_directory'); ?>/assets/book/js/bootstrap.min.js"> </script>
+    <script src="<?php bloginfo('template_directory'); ?>/assets/book/js/jquery.mousewheel.js"> </script>
+    <script src="<?php bloginfo('template_directory'); ?>/assets/book/js/jquery.jscrollpane.min.js"> </script>
+    <script src="<?php bloginfo('template_directory'); ?>/assets/book/js/jquerypp.custom.js"> </script>
+    <script src="<?php bloginfo('template_directory'); ?>/assets/book/js/jquery.bookblock.js"> </script>
+    <script src="<?php bloginfo('template_directory'); ?>/assets/book/js/page.js"> </script>
+    <script src="<?php bloginfo('template_directory'); ?>/assets/book/js/owl.carousel.min.js"> </script>
+    <script src="<?php bloginfo('template_directory'); ?>/assets/book/js/supersized.3.2.7.min.js"> </script>
+    <script src="<?php bloginfo('template_directory'); ?>/assets/book/js/slidebars.min.js"> </script>
+    <script src="<?php bloginfo('template_directory'); ?>/assets/book/js/isotope.pkgd.min.js"> </script>
+    <script src="<?php bloginfo('template_directory'); ?>/assets/book/js/jquery.debouncedresize.js"> </script>
+    <script src="<?php bloginfo('template_directory'); ?>/assets/book/js/imagesloaded.pkgd.min.js"> </script>
+    <script src="<?php bloginfo('template_directory'); ?>/assets/book/js/jquery.validate.min.js"> </script>
+    <script src="<?php bloginfo('template_directory'); ?>/assets/book/js/scripts.js"> </script>
 
-			wp_enqueue_style( 'fontawesome', get_template_directory_uri() . '/assets/book/css/font-awesome.min.css', array(), '1.0');
-		wp_enqueue_style( 'jscrollpane', get_template_directory_uri() . '/assets/book/css/jquery.jscrollpane.custom.css', array(), '1.0');
-		wp_enqueue_style( 'bookblock', get_template_directory_uri() . '/assets/book/css/bookblock.css', array(), '1.0');
-		wp_enqueue_style( 'owl', get_template_directory_uri() . '/assets/book/css/owl.carousel.css', array(), '1.0');
-		wp_enqueue_style( 'supersized', get_template_directory_uri() . '/assets/book/css/supersized.css', array(), '1.0');
-		wp_enqueue_style( 'sidebars', get_template_directory_uri() . '/assets/book/css/slidebars.min.css', array(), '1.0');
-		wp_enqueue_style( 'master', get_template_directory_uri() . '/assets/book/css/master.css', array(), '1.1');
-
-
-?>
 </head>
 <?php if ( is_front_page() ) {
 	$schema = 'itemscope itemtype="http://schema.org/Book" itemref="about alternativeHeadline author copyrightHolder copyrightYear datePublished description editor image inLanguage keywords publisher" ';
