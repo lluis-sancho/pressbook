@@ -15,8 +15,8 @@
 
 	<span id="tblcontents" class="menu-button">Table of Contents</span>
 
-	<span class="bb-nav-close"><i class="fa fa-times"></i></span>
-
+<!-- 	<span class="bb-nav-close"><i class="fa fa-times"></i></span>
+ -->
 			<?php
 				$book_structure = pb_get_book_structure();
 				#print_r($book_structure);
@@ -57,7 +57,7 @@
 		</div><!-- #content -->
 				<?php
 				if ( pb_social_media_enabled() ) {
-					get_template_part( 'content', 'social-footer' );
+					#get_template_part( 'content', 'social-footer' );
 				} ?>
 				
 

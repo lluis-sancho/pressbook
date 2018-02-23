@@ -29,7 +29,7 @@ if( !defined('FIRST_RENDERED') ){
 		#the_title();
 		echo $page["post_name"]
 		?></h1>
-			<?php pb_get_links(); ?>
+			<?php# pb_get_links(); ?>
 		<!--<div id="post-<?php the_ID(); ?>" <?php post_class( pb_get_section_type( $page ) ); ?>> -->
 
 			<!-- <div class="entry-content"> -->

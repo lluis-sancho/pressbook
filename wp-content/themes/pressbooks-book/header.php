@@ -134,17 +134,17 @@ if ( wp_title( '', false ) !== '' ) { print ' id="' . str_replace( ' ', '', strt
 				</div> <!-- end .sub-nav-right -->
 			</nav>
 
-			  <div class="sub-nav">
-					<?php get_search_form(); ?>
+			  <!-- <div class="sub-nav"> -->
+					<?#php get_search_form(); ?>
 				<!-- Author Name -->
-				<div class="author-wrap">
-					<?php $metadata = pb_get_book_information(); ?>
-					<?php if ( ! empty( $metadata['pb_author'] ) ) : ?>
-					 <h3><?php echo $metadata['pb_author']; ?></h3>
-						<?php endif; ?>
-				 </div> <!-- end .author-name -->
+				<!-- <div class="author-wrap"> -->
+					<?php# $metadata = pb_get_book_information(); ?>
+					<?php# if ( ! empty( $metadata['pb_author'] ) ) : ?>
+					 <!-- <h3><?php echo $metadata['pb_author']; ?></h3> -->
+						<?php# endif; ?>
+				 <!-- </div> end .author-name -->
 
-			  </div><!-- end sub-nav -->
+			  <!-- </div>end sub-nav -->
 
 
 		</div> <!-- end .nav-container -->

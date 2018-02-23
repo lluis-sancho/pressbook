@@ -7043,3 +7043,8 @@ body {
   .single-blog-post-header {
     background-size: cover;
     background-attachment: initial; } }
+
+
+    .nav-container{
+      margin-bottom: 0;
+    }
