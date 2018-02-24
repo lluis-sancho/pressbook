@@ -1,3 +1,5 @@
+<!-- TODO: listado de libros -->
+
 <?php
 /**
  * Filter the WP_Site_Query args for the catalog display.
