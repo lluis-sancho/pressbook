@@ -299,7 +299,7 @@ do_action( 'dbx_post_advanced', $post );
 // Allow the Discussion meta box to show up if the post type supports comments,
 // or if comments or pings are open.
 if ( comments_open( $post ) || pings_open( $post ) || post_type_supports( $post_type, 'comments' ) ) {
-	add_meta_box( 'commentstatusdiv', __( 'Discussion' ), 'post_comment_status_meta_box', null, 'normal', 'core' );
+	add_meta_box( 'commentstatusdiv', __( 'Discussion' ), null, 'normal', 'core' );
 }
 
 $stati = get_post_stati( array( 'public' => true ) );
@@ -312,7 +312,7 @@ if ( in_array( get_post_status( $post ), $stati ) ) {
 	// If the post type support comments, or the post has comments, allow the
 	// Comments meta box.
 	if ( comments_open( $post ) || pings_open( $post ) || $post->comment_count > 0 || post_type_supports( $post_type, 'comments' ) ) {
-		add_meta_box( 'commentsdiv', __( 'Comments' ), 'post_comment_meta_box', null, 'normal', 'core' );
+		//add_meta_box( 'commentsdiv', __( 'Comments' ), 'post_comment_meta_box', null, 'normal', 'core' );
 	}
 }
 

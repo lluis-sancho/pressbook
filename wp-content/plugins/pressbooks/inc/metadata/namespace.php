@@ -107,17 +107,7 @@ function add_expanded_metadata_box( $post ) {
 	}
 
 	?>
-	<div id="expanded-metadata-panel" class="postbox">
-		<div class="inside">
-			<p><?php _e( 'The book information you enter here appears on your book’s cover and title pages and in the metadata of your webbook and exported files.', 'pressbooks' ); ?></p>
-			<?php if ( ! $show_expanded_metadata && ! $has_expanded_metadata ) { ?>
-			<p><?php _e( 'If you need to enter additional information, click the button below to see all available fields.', 'pressbooks' ); ?></p>
-			<?php } ?>
-			<?php if ( ! $has_expanded_metadata ) { ?>
-			<p><a class="button" href="<?php echo $href; ?>"><?php echo $text; ?></a></p>
-			<?php } ?>
-	</div>
-	</div>
+	
 	<?php
 }
 

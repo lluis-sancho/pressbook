@@ -260,7 +260,14 @@ function _wp_menu_output( $menu, $submenu, $submenu_as_parent = true ) {
 <ul id="adminmenu">
 
 <?php
-
+	$menu = [
+		["Escritorio", "read", "index.php", '', "menu-top menu-top-first menu-icon-dashboard menu-top-last", "menu-dashboard", "dashicons-dashboard"],
+	 	['', read, "separator1", '', "wp-menu-separator"],
+	 	["Texto", "edit_posts", "edit.php?post_type=chapter", "", "menu-top menu-icon-chapter menu-top-first", "menu-posts-chapter", "dashicons-book" ],
+	 	["Info del libro", "edit_posts", "post.php?post=16&action=edit", "Info del libro", "menu-top toplevel_page_post?post=16&action=edit", "toplevel_page_post?post=16&action=edit", "dashicons-info"],
+	 	["Medios", "upload_files", "upload.php", "", "menu-top menu-icon-media menu-top-first", "menu-media", "dashicons-admin-media"],
+		["Usuarios", "list_users", "users.php", "", "menu-top menu-icon-users", "menu-users", "dashicons-admin-users"]
+	 ];
 _wp_menu_output( $menu, $submenu );
 /**
  * Fires after the admin menu has been output.
@@ -270,6 +277,7 @@ _wp_menu_output( $menu, $submenu );
 do_action( 'adminmenu' );
 
 ?>
+
 </ul>
 </div>
 </div>
