@@ -760,7 +760,16 @@ do_action( 'dbx_post_sidebar', $post );
 if ( post_type_supports( $post_type, 'comments' ) )
 	wp_comment_reply();
 ?>
-
+<script>
+(function( $ ) {
+ 
+    // Add Color Picker to all inputs that have 'color-field' class
+    $(function() {
+			$('#pb_book_color').wpColorPicker();
+    });
+     
+})( jQuery );
+</script>
 <?php if ( ! wp_is_mobile() && post_type_supports( $post_type, 'title' ) && '' === $post->post_title ) : ?>
 <script type="text/javascript">
 try{document.post.title.focus();}catch(e){}

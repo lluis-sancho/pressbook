@@ -233,6 +233,14 @@ function add_meta_boxes() {
 	);
 
 	x_add_metadata_field(
+		'pb_book_color', 'metadata', [
+		'group' => 'general-book-information',
+		'label' => __( 'Book Color', 'pressbooks' ),
+		'description' => __( 'Set color of the book.', 'pressbooks' ),
+		]
+	);
+
+	x_add_metadata_field(
 		'pb_publisher_city', 'metadata', [
 		'group' => 'general-book-information',
 		'label' => __( 'Publisher City', 'pressbooks' ),
