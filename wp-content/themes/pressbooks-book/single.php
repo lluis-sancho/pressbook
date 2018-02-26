@@ -19,7 +19,6 @@
  -->
 			<?php
 				$book_structure = pb_get_book_structure();
-				#print_r($book_structure);
 
 				foreach ( $book_structure["front-matter"] as $page )
 				{ 
