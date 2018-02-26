@@ -5797,7 +5797,6 @@ nav-menu {
 */
 .button, .comment-form form input[type="submit"], .pass-input, form input[type="submit"], .blog-nav a {
   transition: 0.1s;
-  display: inline-block;
   cursor: pointer;
   position: relative;
   color: #000;
