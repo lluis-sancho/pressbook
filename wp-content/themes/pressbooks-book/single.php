@@ -19,7 +19,7 @@
  -->
 			<?php
 				$book_structure = pb_get_book_structure();
-
+				// echo pb_get_book_information()["pb_book_color"];
 				foreach ( $book_structure["front-matter"] as $page )
 				{ 
 					set_query_var( 'page', $page );
@@ -52,6 +52,17 @@
 						
 </div><!-- #bb-bookblock -->
 </div><!-- #bb-custom-wrapper -->
+<script>
+	(function( $ ) {
+    // Add Color Picker to all inputs that have 'color-field' class
+    $(function() {
+    	console.log("change color");
+			$('.nav-container nav').css('background', "<?php echo pb_get_book_information()["pb_book_color"] ?>");
+
+    });
+     
+})( jQuery );
+</script>
 
 		</div><!-- #content -->
 				<?php
@@ -67,14 +78,4 @@
 <?php get_footer(); ?>
 <?php endwhile;
 };?>
-<script>
-	(function( $ ) {
- 
-    // Add Color Picker to all inputs that have 'color-field' class
-    $(function() {
-					$('.nav-container nav').css('background', "<?php echo pb_get_book_information()["pb_book_color"] ?>");
 
-    });
-     
-})( jQuery );
-</script>
