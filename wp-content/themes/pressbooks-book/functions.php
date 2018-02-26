@@ -20,6 +20,7 @@ $metakeys = [
 	'pb_author' => __( 'Author', 'pressbooks-book' ),
 	'pb_contributing_authors' => __( 'Contributing Author', 'pressbooks-book' ),
 	'pb_publisher'  => __( 'Publisher', 'pressbooks-book' ),
+	'pb_book_color'  => __( 'Book Color', 'pressbooks-book' ),
 	'pb_print_isbn'  => __( 'Print ISBN', 'pressbooks-book' ),
 	'pb_keywords_tags'  => __( 'Keywords/Tags', 'pressbooks-book' ),
 	'pb_publication_date'  => __( 'Publication Date', 'pressbooks-book' ),
