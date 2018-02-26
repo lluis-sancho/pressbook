@@ -171,7 +171,7 @@ function add_meta_boxes() {
 		'pb_short_title', 'metadata', [
 		'group' => 'general-book-information',
 		'label' => __( 'Short Title', 'pressbooks' ),
-		'description' => __( 'In case of long titles that might be truncated in running heads in the PDF export.', 'pressbooks' ),
+		//'description' => __( 'In case of long titles that might be truncated in running heads in the PDF export.', 'pressbooks' ),
 		]
 	);
 
@@ -194,7 +194,7 @@ function add_meta_boxes() {
 			'pb_author_file_as', 'metadata', [
 			'group' => 'general-book-information',
 			'label' => __( 'Author, file as', 'pressbooks' ),
-			'description' => __( 'This ensures that your ebook will sort properly in ebook stores, by the author\'s last name.', 'pressbooks' ),
+			//'description' => __( 'This ensures that your ebook will sort properly in ebook stores, by the author\'s last name.', 'pressbooks' ),
 			]
 		);
 	}
@@ -245,7 +245,7 @@ function add_meta_boxes() {
 		'field_type' => 'datepicker',
 		'group' => 'general-book-information',
 		'label' => __( 'Publication Date', 'pressbooks' ),
-		'description' => __( 'This is added to the metadata in your ebook.', 'pressbooks' ),
+		//'description' => __( 'This is added to the metadata in your ebook.', 'pressbooks' ),
 		]
 	);
 
@@ -255,7 +255,7 @@ function add_meta_boxes() {
 			'field_type' => 'datepicker',
 			'group' => 'general-book-information',
 			'label' => __( 'On-Sale Date', 'pressbooks' ),
-			'description' => __( 'This is added to the metadata in your ebook.', 'pressbooks' ),
+			//'description' => __( 'This is added to the metadata in your ebook.', 'pressbooks' ),
 			]
 		);
 	}
@@ -283,7 +283,7 @@ function add_meta_boxes() {
 		'values' => \Pressbooks\L10n\supported_languages(),
 		'select2' => true,
 		'label' => __( 'Language', 'pressbooks' ),
-		'description' => __( 'This sets metadata in your ebook, making it easier to find in some stores. It also changes some system generated content for supported languages, such as the "Contents" header.', 'pressbooks' ) . '<br />' . sprintf( '<a href="https://www.transifex.com/pressbooks/pressbooks/">%s</a>', __( 'Help translate Pressbooks into your language!', 'pressbooks' ) ),
+		//'description' => __( 'This sets metadata in your ebook, making it easier to find in some stores. It also changes some system generated content for supported languages, such as the "Contents" header.', 'pressbooks' ) . '<br />' . sprintf( '<a href="https://www.transifex.com/pressbooks/pressbooks/">%s</a>', __( 'Help translate Pressbooks into your language!', 'pressbooks' ) ),
 		]
 	);
 
@@ -364,10 +364,10 @@ function add_meta_boxes() {
 		]
 	);
 
-	add_meta_box( 'subject', __( 'Subject(s)', 'pressbooks' ), __NAMESPACE__ . '\metadata_subject_box', 'metadata', 'normal', 'low' );
+	//add_meta_box( 'subject', __( 'Subject(s)', 'pressbooks' ), __NAMESPACE__ . '\metadata_subject_box', 'metadata', 'normal', 'low' );
 
 	if ( $show_expanded_metadata ) {
-		x_add_metadata_group(
+		/*x_add_metadata_group(
 			'additional-catalog-information', 'metadata', [
 			'label' => __( 'Additional Catalog Information', 'pressbooks' ),
 			'priority' => 'low',
@@ -455,36 +455,26 @@ function add_meta_boxes() {
 		);
 
 		x_add_metadata_field(
-			/**
-			 * Filter metadata field arguments for BISAC Subject(s).
-			 *
-			 * @since 4.0.0
-			 */
 			'pb_bisac_subject', 'metadata', apply_filters( 'pb_bisac_subject_field_args', [
 				'group' => 'additional-catalog-information',
 				'label' => __( 'BISAC Subject(s)', 'pressbooks' ),
 				'multiple' => true,
 				'description' => __( 'BISAC Subject Headings help libraries and (e)book stores properly classify your book.', 'pressbooks' ),
 			] )
-		);
+		);*/
 
-		x_add_metadata_field(
-			/**
-			 * Filter metadata field arguments for BISAC Regional Theme.
-			 *
-			 * @since 4.0.0
-			 */
+		/*x_add_metadata_field(
 			'pb_bisac_regional_theme', 'metadata', apply_filters( 'pb_bisac_regional_theme_field_args', [
 				'group' => 'additional-catalog-information',
 				'label' => __( 'BISAC Regional Theme', 'pressbooks' ),
 				'description' => __( 'BISAC Regional Themes help libraries and (e)book stores properly classify your book.', 'pressbooks' ),
 			] )
-		);
+		);*/
 	}
 
 	// Chapter Metadata
 
-	x_add_metadata_group(
+	/*x_add_metadata_group(
 		'chapter-metadata', 'chapter', [
 		'label' => __( 'Chapter Metadata', 'pressbooks' ),
 		]
@@ -518,7 +508,7 @@ function add_meta_boxes() {
 		'values' => [ '' => __( 'Select a License', 'pressbooks' ) ] + $licenses,
 		'label' => __( 'Chapter Copyright License (overrides book license on this page)', 'pressbooks' ),
 		]
-	);
+	);*/
 
 	// Chapter Parent
 
@@ -532,7 +522,7 @@ function add_meta_boxes() {
 
 	// Export
 
-	x_add_metadata_group(
+	/*x_add_metadata_group(
 		'export', [ 'chapter', 'front-matter', 'back-matter' ], [
 		'label' => __( 'Export Settings', 'pressbooks' ),
 		'context' => 'side',
@@ -562,11 +552,11 @@ function add_meta_boxes() {
 		'field_type' => 'checkbox',
 		'label' => __( 'Set as ebook start-point', 'pressbooks' ),
 		]
-	);
+	);*/
 
 	// Front Matter Metadata
 
-	x_add_metadata_group(
+	/*x_add_metadata_group(
 		'front-matter-metadata', 'front-matter', [
 		'label' => __( 'Front Matter Metadata', 'pressbooks' ),
 		]
@@ -600,7 +590,7 @@ function add_meta_boxes() {
 		'values' => [ '' => __( 'Select a License', 'pressbooks' ) ] + $licenses,
 		'label' => __( 'Front Matter Copyright License (overrides book license on this page)', 'pressbooks' ),
 		]
-	);
+	);*/
 
 	// Back Matter Metadata
 

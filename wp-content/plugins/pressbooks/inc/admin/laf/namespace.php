@@ -358,59 +358,21 @@ function replace_menu_bar_branding( $wp_admin_bar ) {
 	$wp_admin_bar->remove_menu( 'wp-logo' );
 	$wp_admin_bar->remove_menu( 'documentation' );
 	$wp_admin_bar->remove_menu( 'feedback' );
+	$wp_admin_bar->remove_menu( 'about' );
+	$wp_admin_bar->remove_menu( 'wporg' );
+	$wp_admin_bar->remove_menu( 'support-forums' );
+	$wp_admin_bar->remove_menu( 'contact' );
+
 	$wp_admin_bar->add_menu(
 		[
 			'id' => 'wp-logo',
-			'title' => '<span class="ab-icon"></span>',
-			'href' => ( 'https://pressbooks.com/about' ),
-			'meta' => [
+			'title' => 'Tecmerin',
+			'href' => ( '/' ),
+			/*'meta' => [
 				'title' => __( 'About Pressbooks', 'pressbooks' ),
-			],
+			],*/
 		]
 	);
-
-	if ( is_user_logged_in() ) {
-		// Add "About WordPress" link
-		$wp_admin_bar->add_menu(
-			[
-				'parent' => 'wp-logo',
-				'id' => 'about',
-				'title' => __( 'About Pressbooks', 'pressbooks' ),
-				'href' => 'https://pressbooks.com/about',
-			]
-		);
-	}
-
-	// Add WordPress.org link
-	$wp_admin_bar->add_menu(
-		[
-			'parent' => 'wp-logo-external',
-			'id' => 'wporg',
-			'title' => __( 'Pressbooks.com', 'pressbooks' ),
-			'href' => 'https://pressbooks.com',
-		]
-	);
-
-	// Add forums link
-	$wp_admin_bar->add_menu(
-		[
-			'parent' => 'wp-logo-external',
-			'id' => 'support-forums',
-			'title' => __( 'Help', 'pressbooks' ),
-			'href' => 'https://pressbooks.com/help',
-		]
-	);
-
-	// Add feedback link
-	$wp_admin_bar->add_menu(
-		[
-			'parent' => 'wp-logo-external',
-			'id' => 'contact',
-			'title' => __( 'Contact', 'pressbooks' ),
-			'href' => 'https://pressbooks.com/contact',
-		]
-	);
-
 }
 
 /**
