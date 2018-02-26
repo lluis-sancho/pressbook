@@ -8,7 +8,7 @@ if( !defined('FIRST_RENDERED') ){
 <div class="bb-item <?php echo get_the_ID() === $page["ID"] ? ' actived_manually' : '' ?>" id="item<?php echo $page["ID"];	 ?>" style="display: <?php  echo (get_the_ID() === $page["ID"] && !$first ? 'block' : 'none'); ?>;">
 				<div class="book-content " tabindex="0">
 
-    <?php edit_post_link( __( 'Edit', 'pressbooks-book' ), '<span class="edit-link">', '</span>',$page["ID"]  ); ?>
+    <?php //edit_post_link( __( 'Edit', 'pressbooks-book' ), '<span class="edit-link">', '</span>',$page["ID"]  ); ?>
 		<?php
 		// add part title to chapters
 		$web_options = get_option( 'pressbooks_theme_options_web' );
@@ -27,7 +27,7 @@ if( !defined('FIRST_RENDERED') ){
 		echo "<span>$chapter_number</span>  ";
 	}
 		#the_title();
-		echo $page["post_name"]
+		//echo $page["post_name"]
 		?></h1>
 			<?php# pb_get_links(); ?>
 		<!--<div id="post-<?php the_ID(); ?>" <?php post_class( pb_get_section_type( $page ) ); ?>> -->

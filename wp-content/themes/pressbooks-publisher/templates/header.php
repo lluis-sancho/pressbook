@@ -1,3 +1,4 @@
+<!-- TODO[cmuino]: header del registro
 <header class="banner">
   <div class="container">
     <div class="link-wrap">
@@ -38,3 +39,4 @@
 		<?php } ?>
 	</div>
 </header>
+-->

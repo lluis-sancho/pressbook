@@ -64,7 +64,7 @@
 <?php else : ?>
 <?php pb_private(); ?>
 <?php endif; ?>
-<?php get_footer(); ?>
+<?php //get_footer(); ?>
 <?php endwhile;
 };?>
 <script>
