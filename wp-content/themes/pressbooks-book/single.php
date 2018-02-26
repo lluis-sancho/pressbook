@@ -67,4 +67,14 @@
 <?php get_footer(); ?>
 <?php endwhile;
 };?>
+<script>
+	(function( $ ) {
+ 
+    // Add Color Picker to all inputs that have 'color-field' class
+    $(function() {
+					$('.nav-container nav').css('background', "<?php echo pb_get_book_information()["pb_book_color"] ?>");
 
+    });
+     
+})( jQuery );
+</script>
