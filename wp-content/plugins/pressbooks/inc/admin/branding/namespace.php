@@ -46,7 +46,7 @@ function custom_color_scheme() {
 function custom_login_logo() {
 	$html = '<style type="text/css">
 	.login h1 a {
-  	background-image: url(' . PB_PLUGIN_URL . 'assets/dist//images/PB-logo.svg' . ');
+  	background-image: url(' . PB_PLUGIN_URL . 'assets/dist//images/tecmerin_logo.png' . ');
   	background-size: 276px 40px;
   	width: 276px;
   	height: 40px; }
@@ -55,7 +55,7 @@ function custom_login_logo() {
 	.login #backtoblog a:hover, .login #backtoblog a:active, .login #backtoblog a:focus, .login #nav a:hover, .login #nav a:active, .login #nav a:focus {
   	color: #d4002d; }
 	.no-svg .login h1 a {
-  	background-image: url(' . PB_PLUGIN_URL . 'assets/dist//images/PB-logo.png' . '; }
+  	background-image: url(' . PB_PLUGIN_URL . 'assets/dist//images/tecmerin_logo.png' . '; }
 	</style>';
 	/**
 	 * Print <link> or <style> tag to add a custom logo for the login page.

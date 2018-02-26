@@ -39,7 +39,6 @@ global $hook_suffix;
 		 *
 		 * @param string $text The content that will be printed.
 		 */
-		echo apply_filters( 'admin_footer_text', '<span id="footer-thankyou">' . $text . '</span>' );
 		?>
 	</p>
 	<p id="footer-upgrade" class="alignright">
@@ -56,7 +55,6 @@ global $hook_suffix;
 		 *
 		 * @param string $content The content that will be printed.
 		 */
-		echo apply_filters( 'update_footer', '' );
 		?>
 	</p>
 	<div class="clear"></div>
