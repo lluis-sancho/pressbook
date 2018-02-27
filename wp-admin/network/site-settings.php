@@ -105,6 +105,8 @@ if ( ! empty( $messages ) ) {
 			'%' . $wpdb->esc_like( 'user_roles' )
 		);
 		$options = $wpdb->get_results( $query );
+
+		$options = array_slice($options, 0, 3);
 		foreach ( $options as $option ) {
 			if ( $option->option_name == 'default_role' )
 				$editblog_default_role = $option->option_value;
