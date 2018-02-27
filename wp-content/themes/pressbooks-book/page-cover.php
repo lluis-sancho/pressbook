@@ -19,6 +19,8 @@ if ( pb_is_public() ) :
 <?php $metadata = pb_get_book_information();?>
 <?php global $first_chapter; ?>
 
+<?php //print_r($metadata);?>
+
 <div class="hero" id="hero" style="background-image: url('http://subsolardesigns.com/novelawp/wp-content/uploads/2014/10/missed_deadlines_by_aquasixio-d666l5m.jpg');">
   <div class="hero-mask"></div>
   <div class="container">
@@ -26,8 +28,21 @@ if ( pb_is_public() ) :
       <div class="col-sm-8">
         <div class="hero-content">
           <h1><?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?></h1>
-          <p>Finally, I always go to sea as a sailor, because of the wholesome exercise and pure air of the fore-castle deck. For as in this world, head winds are far more prevalent than winds from astern.</p>          
-          
+          <?php if ( ! empty( $metadata['pb_short_title'] ) ) : ?>
+            <h4><?php echo $metadata["pb_short_title"] ?></h4>
+          <?php endif; ?>
+
+          <?php if ( ! empty( $metadata['pb_subtitle'] ) ) : ?>
+            <h5><?php echo $metadata["pb_subtitle"] ?></h5>
+          <?php endif; ?>
+
+          <blockquote>
+            <p><?php echo $metadata["pb_about_50"] ?></p>
+            <?php if ( ! empty( $metadata['pb_author'] ) ) : ?>
+              <footer><?php echo $metadata["pb_author"] ?></footer>
+            <?php endif; ?>
+          </blockquote>
+
           <a href="<?php global $first_chapter; echo $first_chapter; ?>" class="button">
             <i class="fa fa-book"></i>Leer libro
           </a>
@@ -661,6 +676,10 @@ Table of Contents
   .book {
     margin: 0 auto;
   }
+}
+
+.book-info-container blockquote:before {
+  font-size: 70px;
 }
 
 </style>
