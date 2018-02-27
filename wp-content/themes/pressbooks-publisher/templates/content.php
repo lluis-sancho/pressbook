@@ -14,7 +14,7 @@ foreach ( $books->sites as $book ) {
 		$metadata = pb_get_book_information();
 		restore_current_blog(); ?>
 
-		<div class="col-md-3">
+		<div class="col-md-3" style="padding-bottom: 15px;">
 			<a href="//<?php echo $book->domain . $book->path; ?>" title="<?php echo $metadata['pb_title']; ?>">
 				<img src="<?php echo $metadata['pb_cover_image']; ?>" class="img-responsive" alt="<?php echo $metadata['pb_title']; ?>" />
 			</a>				
