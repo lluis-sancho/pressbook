@@ -918,7 +918,7 @@ function network_edit_site_nav( $args = array() ) {
 	$links = apply_filters( 'network_edit_site_nav_links', array(
 		'site-info'     => array( 'label' => __( 'Info' ),     'url' => 'site-info.php',     'cap' => 'manage_sites' ),
 		'site-users'    => array( 'label' => __( 'Users' ),    'url' => 'site-users.php',    'cap' => 'manage_sites' ),
-		'site-themes'   => array( 'label' => __( 'Themes' ),   'url' => 'site-themes.php',   'cap' => 'manage_sites' ),
+		//'site-themes'   => array( 'label' => __( 'Themes' ),   'url' => 'site-themes.php',   'cap' => 'manage_sites' ),
 		'site-settings' => array( 'label' => __( 'Settings' ), 'url' => 'site-settings.php', 'cap' => 'manage_sites' )
 	) );
 
