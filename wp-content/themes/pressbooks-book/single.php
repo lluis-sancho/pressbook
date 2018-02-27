@@ -23,6 +23,7 @@
 
 				foreach ( $book_structure["front-matter"] as $page )
 				{ 
+					set_query_var( 'visible_post_name', true );
 					set_query_var( 'page', $page );
 					get_template_part( 'new_item');
 				} ?> <!-- foreach -->
@@ -35,10 +36,12 @@
 				<?php 
 				foreach ( $book_structure["part"] as $part )
 				{ 
+						set_query_var( 'visible_post_name', true );
 						set_query_var( 'page', $part );
 						get_template_part( 'new_item');  
 					foreach ( $part["chapters"] as $page )
 					{
+						set_query_var( 'visible_post_name', false );
 						set_query_var( 'page', $page );
 						get_template_part( 'new_item');  
 
@@ -47,6 +50,7 @@
 				<?php 
 				foreach ( $book_structure["back-matter"] as $page )
 				{
+					set_query_var( 'visible_post_name', true );
 					set_query_var( 'page', $page );
 					get_template_part( 'new_item');    
 				} ?> <!-- foreach -->
