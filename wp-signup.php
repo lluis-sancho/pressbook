@@ -1,3 +1,5 @@
+
+<!-- TODO[cmuino]: crear libro -->
 <?php
 
 /** Sets up the WordPress Environment. */
@@ -84,6 +86,7 @@ get_header( 'wp-signup' );
 do_action( 'before_signup_form' );
 ?>
 <div id="signup-content" class="widecolumn">
+
 <div class="mu_register wp-signup-container">
 <?php
 /**
@@ -819,7 +822,7 @@ $active_signup = get_site_option( 'registration', 'none' );
  */
 $active_signup = apply_filters( 'wpmu_active_signup', $active_signup );
 
-if ( current_user_can( 'manage_network' ) ) {
+/*if ( current_user_can( 'manage_network' ) ) {
 	echo '<div class="mu_alert">';
 	_e( 'Greetings Network Administrator!' );
 	echo ' ';
@@ -841,10 +844,9 @@ if ( current_user_can( 'manage_network' ) ) {
 
 	echo ' ';
 
-	/* translators: %s: network settings URL */
 	printf( __( 'To change or disable registration go to your <a href="%s">Options page</a>.' ), esc_url( network_admin_url( 'settings.php' ) ) );
 	echo '</div>';
-}
+}*/
 
 $newblogname = isset($_GET['new']) ? strtolower(preg_replace('/^-|-$|[^-a-zA-Z0-9]/', '', $_GET['new'])) : null;
 

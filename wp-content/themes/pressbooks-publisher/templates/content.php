@@ -1,4 +1,4 @@
-<!-- TODO: listado de libros -->
+<!-- TODO[cmuino]: listado de libros -->
 
 <?php
 /**
