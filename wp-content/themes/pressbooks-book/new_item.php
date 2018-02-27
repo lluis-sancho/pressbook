@@ -26,9 +26,17 @@ if( !defined('FIRST_RENDERED') ){
 	if ( $chapter_number ) {
 		echo "<span>$chapter_number</span>  ";
 	}
-		#the_title();
-		//echo $page["post_name"]
-		?></h1>
+
+	if ( $visible_post_name ) {
+		echo $page["post_name"];
+	} else {
+		echo $pages;
+	}
+
+	
+	#the_title();
+	
+	?></h1>
 			<?php# pb_get_links(); ?>
 		<!--<div id="post-<?php the_ID(); ?>" <?php post_class( pb_get_section_type( $page ) ); ?>> -->
 

@@ -20,11 +20,18 @@
 <!--<span class="bb-nav-close"><i class="fa fa-times"></i></span>-->
 			<?php
 				$book_structure = pb_get_book_structure();
+
+				$pages = 1;
 				// echo pb_get_book_information()["pb_book_color"];
 				foreach ( $book_structure["front-matter"] as $page )
 				{ 
+					set_query_var( 'visible_post_name', true );
 					set_query_var( 'page', $page );
+					set_query_var( 'pages', $pages );
+
 					get_template_part( 'new_item');
+
+					$pages += 1;
 				} ?> <!-- foreach -->
 				<?php 
 				#foreach ( $book_structure["chapters"] as $page )
@@ -35,18 +42,26 @@
 				<?php 
 				foreach ( $book_structure["part"] as $part )
 				{ 
-						set_query_var( 'page', $part );
-						get_template_part( 'new_item');  
+					set_query_var( 'visible_post_name', true );
+					set_query_var( 'page', $part );
+					set_query_var( 'pages', $pages );
+
+					get_template_part( 'new_item'); 
+					$pages += 1; 
 					foreach ( $part["chapters"] as $page )
 					{
+						set_query_var( 'visible_post_name', false );
 						set_query_var( 'page', $page );
-						get_template_part( 'new_item');  
+						set_query_var( 'pages', $pages );
 
+						get_template_part( 'new_item');  
+						$pages += 1; 
 					}
 				} ?> <!-- foreach -->
 				<?php 
 				foreach ( $book_structure["back-matter"] as $page )
 				{
+					set_query_var( 'visible_post_name', true );
 					set_query_var( 'page', $page );
 					get_template_part( 'new_item');    
 				} ?> <!-- foreach -->
