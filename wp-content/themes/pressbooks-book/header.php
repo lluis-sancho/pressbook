@@ -93,13 +93,12 @@ if ( wp_title( '', false ) !== '' ) { print ' id="' . str_replace( ' ', '', strt
 				<nav>
 
 					 <!-- Book Title -->
-					<h1 class="book-title"><a href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-
-
+					<?php $metadata = pb_get_book_information(); ?>
+					<h1 class="book-title"><a href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?> - <?php echo $metadata['pb_subtitle'] ?></a></h1>
 
 						<div class="sub-nav-left">
 							<!-- Logo -->
-							<h2 class="pressbooks-logo"><a href="<?php echo esc_url( network_home_url() ); ?>"><?php echo get_site_option( 'site_name' ); ?></a></h2>
+							<h2 class="pressbooks-logo"><a href="<?php echo esc_url( network_home_url() ); ?>">Tecmerin</a></h2>
 						</div> <!-- end .sub-nav-left -->
 
 				<div class="sub-nav-right">
