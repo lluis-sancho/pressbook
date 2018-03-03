@@ -28,7 +28,7 @@ if( !defined('FIRST_RENDERED') ){
 	}
 
 	if ( $visible_post_name ) {
-		echo $page["post_name"];
+		//echo $page["post_name"];
 	} else {
 		echo $pages;
 	}

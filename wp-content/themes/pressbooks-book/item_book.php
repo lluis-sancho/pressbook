@@ -49,7 +49,7 @@
 		<span id="bb-nav-next" style="display: none;">→</span>
 	</nav>
 
-	<span id="tblcontents" class="menu-button">Table of Contents</span>
+	<span id="tblcontents" class="menu-button">Indice</span>
 
 	<span class="bb-nav-close"><i class="fa fa-times"></i></span>
 

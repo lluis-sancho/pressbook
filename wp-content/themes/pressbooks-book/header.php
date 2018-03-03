@@ -131,7 +131,7 @@ if ( wp_title( '', false ) !== '' ) { print ' id="' . str_replace( ' ', '', strt
 <div class="main-content" id="sb-site" style="min-height: 360px;">		
 	<div id="book-container" class="book-container" style="margin-top: 40px;">
 		<div class="menu-panel">
-			<h3> <?php  _e( 'Table of Contents', 'pressbooks-book' ) ?></h3>
+			<h3>Indice</h3>
 			<ul id="menu-toc" class="menu-toc">
 						<!-- Pop out TOC only on READ pages -->
 		<?php if ( is_single() ) : ?>

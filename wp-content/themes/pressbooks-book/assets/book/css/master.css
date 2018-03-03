@@ -6055,7 +6055,7 @@ blockquote {
 
 .js .book-content {
   position: absolute;
-  top: 60px;
+  top: 10px;
   left: 0;
   width: 100%;
   bottom: 50px;
@@ -6129,8 +6129,8 @@ blockquote {
   box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.05), inset -30px 0 40px -20px rgba(0, 0, 0, 0.15); }
 
 .chapter-heading {
-  font-size: 55px;
-  margin-bottom: 90px; 
+  font-size: 20px;
+  /*margin-bottom: 90px; */
 }
 
 @media only screen and (max-width: 768px) {
