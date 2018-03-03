@@ -3,6 +3,7 @@
   http://srobbin.com/blog/3d-css-book-covers/
 -->
 
+<!-- TODO[cmuino]: portada -->
 <?php
 	get_header();
 	$metadata = pb_get_book_information();
@@ -544,6 +545,7 @@ Table of Contents
   5. events
 */
 
+/*
 .book:hover > .hardcover_front {
   -webkit-transform: rotateY(-145deg) translateZ(0);
   -moz-transform: rotateY(-145deg) translateZ(0);
@@ -595,7 +597,7 @@ Table of Contents
   -moz-transition-duration: 1.2s;
   transition-duration: 1.2s;
 }
-
+*/
 /*
   6. Bonus
 */
