@@ -98,7 +98,7 @@ if ( wp_title( '', false ) !== '' ) { print ' id="' . str_replace( ' ', '', strt
 
 						<div class="sub-nav-left">
 							<!-- Logo -->
-							<h2 class="pressbooks-logo"><a href="<?php echo esc_url( network_home_url() ); ?>">Tecmerin</a></h2>
+							<h2 class="pressbooks-logo"><a href="<?php echo esc_url( network_home_url() ); ?>">Cuadernos Tecmerin</a></h2>
 						</div> <!-- end .sub-nav-left -->
 
 				<div class="sub-nav-right">
