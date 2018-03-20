@@ -117,6 +117,7 @@ class Book {
 		$expected_array = [ 'pb_keywords_tags', 'pb_additional_subjects', 'pb_bisac_subject', 'pb_contributing_authors', 'pb_editor', 'pb_translator' ];
 		$expected_the_content = [ 'pb_custom_copyright', 'pb_about_unlimited' ];
 		$expected_url = [ 'pb_cover_image' ];
+		$expected_url_front = [ 'pb_front_image' ];
 
 		$book_information = [];
 		$meta = new Metadata();
@@ -156,6 +157,11 @@ class Book {
 				$val = set_url_scheme( $val );
 			}
 
+						// Normalize URLs
+			if ( in_array( $key, $expected_url_front, true ) ) {
+				$val = set_url_scheme( $val );
+			}
+
 			// Remove invisible control characters that break XML
 			$val = \Pressbooks\Sanitize\remove_control_characters( $val );
 
@@ -171,6 +177,8 @@ class Book {
 			$author = get_user_by( 'email', get_bloginfo( 'admin_email' ) );
 			$book_information['pb_author'] = isset( $author->display_name ) ? $author->display_name : '';
 			$book_information['pb_cover_image'] = \Pressbooks\Image\default_cover_url();
+			$book_information['pb_front_image'] = \Pressbooks\Image\default_cover_url();
+
 		}
 
 		// -----------------------------------------------------------------------------

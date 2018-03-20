@@ -146,9 +146,11 @@ class Metadata implements \JsonSerializable {
 		}
 		if ( $version < 5 ) {
 			$this->changeDefaultBookCover();
+			$this->changeDefaultFrontCover();
 		}
 		if ( $version < 6 || $version < 7 ) {
 			$this->makeThumbnailsForBookCover();
+			$this->makeThumbnailsForFrontCover();
 		}
 		if ( $version < 8 ) {
 			$this->resetLandingPage();
@@ -322,6 +324,7 @@ class Metadata implements \JsonSerializable {
 				'Publication Date' => 'pb_publication_date',
 				'Publisher City' => 'pb_publisher_city',
 				'Cover Image' => 'pb_cover_image',
+				'Web Image' => 'pb_front_image',
 				'Copyright Year' => 'pb_copyright_year',
 				'Copyright Holder' => 'pb_copyright_holder',
 				'Copyright Extra Info' => 'pb_custom_copyright',
@@ -388,6 +391,21 @@ class Metadata implements \JsonSerializable {
 		}
 	}
 
+	/**
+	 * Change default book cover from PNG to JPG
+	 */
+	function changeDefaultFrontCover() {
+
+		$post = $this->getMetaPost();
+
+		if ( $post ) {
+			$pb_front_image = get_post_meta( $post->ID, 'pb_front_image', true );
+			if ( preg_match( '~assets/images/default-book-cover\.png$~', $pb_front_image ) ) {
+				update_post_meta( $post->ID, 'pb_front_image', \Pressbooks\Image\default_cover_url() );
+				Book::deleteBookObjectCache();
+			}
+		}
+	}
 
 	/**
 	 * Generate thumbnails for a user uploaded cover
@@ -420,6 +438,37 @@ class Metadata implements \JsonSerializable {
 		}
 	}
 
+
+	/**
+	 * Generate thumbnails for a user uploaded cover
+	 */
+	function makeThumbnailsForFrontCover() {
+
+		$post = $this->getMetaPost();
+		if ( $post ) {
+
+			$pb_front_image = get_post_meta( $post->ID, 'pb_front_image', true );
+			if ( $pb_front_image && ! preg_match( '~assets/dist/images/default-book-cover\.jpg$~', $pb_front_image ) ) {
+
+				$path = \Pressbooks\Utility\get_media_path( $pb_front_image );
+				$type = wp_check_filetype( $path );
+				$type = $type['type'];
+
+				// Insert new image, create thumbnails
+				$args = [
+					'post_mime_type' => $type,
+					'post_title' => __( 'Cover Image', 'pressbooks' ),
+					'post_content' => '',
+					'post_status' => 'inherit',
+				];
+
+				include_once( ABSPATH . 'wp-admin/includes/image.php' );
+				$id = wp_insert_attachment( $args, $path, $post->ID );
+				wp_update_attachment_metadata( $id, wp_generate_attachment_metadata( $id, $path ) );
+				Book::deleteBookObjectCache();
+			}
+		}
+	}
 
 	/**
 	 * Fix broken landing page

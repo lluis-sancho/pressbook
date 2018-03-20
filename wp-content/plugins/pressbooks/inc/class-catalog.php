@@ -206,6 +206,18 @@ class Catalog {
 				}
 				$data[ $i ]['cover_url']['full'] = $cover;
 
+				// Cover Full
+				if ( $meta_version < 7 ) {
+					$cover = PB_PLUGIN_URL . 'assets/dist/images/default-book-cover.jpg';
+				} elseif ( empty( $metadata['pb_front_image'] ) ) {
+					$cover = PB_PLUGIN_URL . 'assets/dist/images/default-book-cover.jpg';
+				} elseif ( \Pressbooks\Image\is_default_cover( $metadata['pb_front_image'] ) ) {
+					$cover = PB_PLUGIN_URL . 'assets/dist/images/default-book-cover.jpg';
+				} else {
+					$cover = \Pressbooks\Image\thumbnail_from_url( $metadata['pb_front_image'], 'full' );
+				}
+				$data[ $i ]['front_url']['full'] = $cover;				
+
 				// Cover Thumbnails
 				/**
 				 * Exposes $cover variable to be changed as-needed for cover images.
@@ -228,6 +240,16 @@ class Catalog {
 						$data[ $i ]['cover_url'][ $size ] = $default;
 					}
 				}
+
+				$cid = \Pressbooks\Image\attachment_id_from_url( apply_filters( 'pb_front_image', $cover, $metadata['pb_front_image'] ) );
+				foreach ( $cover_sizes as $size => $default ) {
+					$cid_thumb = wp_get_attachment_image_src( $cid, $size );
+					if ( $cid_thumb ) {
+						$data[ $i ]['front_url'][ $size ] = $cid_thumb[0];
+					} else {
+						$data[ $i ]['front_url'][ $size ] = $default;
+					}
+				}				
 
 				// Tags
 				for ( $j = 1; $j <= self::MAX_TAGS_GROUP; ++$j ) {
@@ -291,6 +313,16 @@ class Catalog {
 			}
 			$data[ $i ]['cover_url']['full'] = $cover;
 
+			if ( $meta_version < 7 ) {
+				$cover = PB_PLUGIN_URL . 'assets/dist/images/default-book-cover.jpg';
+			} elseif ( empty( $metadata['pb_front_image'] ) ) {
+				$cover = PB_PLUGIN_URL . 'assets/dist/images/default-book-cover.jpg';
+			} elseif ( \Pressbooks\Image\is_default_cover( $metadata['pb_front_image'] ) ) {
+				$cover = PB_PLUGIN_URL . 'assets/dist/images/default-book-cover.jpg';
+			} else {
+				$cover = \Pressbooks\Image\thumbnail_from_url( $metadata['pb_front_image'], 'full' );
+			}
+			$data[ $i ]['front_url']['full'] = $cover;
 			// Cover Thumbnails
 			/** This filter is documented in pressbooks/includes/class-pb-catalog.php */
 			$cid = \Pressbooks\Image\attachment_id_from_url( apply_filters( 'pb_cover_image', $cover, $metadata['pb_cover_image'] ) );
@@ -302,6 +334,16 @@ class Catalog {
 					$data[ $i ]['cover_url'][ $size ] = $default;
 				}
 			}
+
+			$cid = \Pressbooks\Image\attachment_id_from_url( apply_filters( 'pb_front_image', $cover, $metadata['pb_front_image'] ) );
+			foreach ( $cover_sizes as $size => $default ) {
+				$cid_thumb = wp_get_attachment_image_src( $cid, $size );
+				if ( $cid_thumb ) {
+					$data[ $i ]['front_url'][ $size ] = $cid_thumb[0];
+				} else {
+					$data[ $i ]['front_url'][ $size ] = $default;
+				}
+			}			
 
 			// Tags
 			for ( $j = 1; $j <= self::MAX_TAGS_GROUP; ++$j ) {

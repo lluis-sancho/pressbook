@@ -595,6 +595,17 @@ class Cloner {
 			$book_information['pb_cover_image'] = default_cover_url();
 		}
 
+		if ( strpos( $book_information['pb_front_image'], 'plugins/pressbooks/assets/dist/images/default-book-cover.jpg' ) === false ) {
+			$new_cover_id = $this->fetchAndSaveUniqueImage( $book_information['pb_front_image'] );
+			if ( $new_cover_id ) {
+				$book_information['pb_front_image'] = wp_get_attachment_url( $new_cover_id );
+			} else {
+				$book_information['pb_front_image'] = default_cover_url();
+			}
+		} else {
+			$book_information['pb_front_image'] = default_cover_url();
+		}
+
 		$array_values = [ 'pb_keywords_tags', 'pb_bisac_subject', 'pb_contributing_authors', 'pb_editor', 'pb_translator' ];
 
 		foreach ( $book_information as $key => $value ) {

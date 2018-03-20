@@ -359,6 +359,7 @@ class Activation {
 						update_post_meta( $metadata_id, 'pb_title', get_option( 'blogname' ) );
 						update_post_meta( $metadata_id, 'pb_language', $locale );
 						update_post_meta( $metadata_id, 'pb_cover_image', \Pressbooks\Image\default_cover_url() );
+						update_post_meta( $metadata_id, 'pb_front_image', \Pressbooks\Image\default_cover_url() );
 					}
 				} else {
 					trigger_error( $newpost->get_error_message(), E_USER_ERROR );

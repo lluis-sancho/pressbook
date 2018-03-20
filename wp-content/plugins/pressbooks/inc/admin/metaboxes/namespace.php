@@ -87,7 +87,7 @@ function upload_cover_image( $pid, $post ) {
 	foreach ( $old as $old_url ) {
 		$old_id = \Pressbooks\Image\attachment_id_from_url( $old_url );
 		if ( $old_id ) {
-			wp_delete_attachment( $old_id, true );
+			//wp_delete_attachment( $old_id, true );
 		}
 	}
 
@@ -101,6 +101,64 @@ function upload_cover_image( $pid, $post ) {
 	];
 	$id = wp_insert_attachment( $args, $image['file'], $pid );
 	wp_update_attachment_metadata( $id, wp_generate_attachment_metadata( $id, $image['file'] ) );
+}
+
+
+
+/**
+ * Process uploaded web image
+ *
+ * @param $pid
+ * @param $post
+ */
+
+function upload_front_image( $pid, $post ) {
+	if ( ! isset( $_FILES['pb_front_image']['name'] ) || empty( $_FILES['pb_front_image']['name'] ) ) {
+		return; // Bail
+	}
+
+	if ( ! current_user_can_for_blog( get_current_blog_id(), 'upload_files' ) ) {
+		return; // Bail
+	}
+
+	$allowed_file_types = [ 'jpg' => 'image/jpeg', 'jpeg' => 'image/jpeg', 'gif' => 'image/gif', 'png' => 'image/png' ];
+	$overrides = [ 'test_form' => false, 'mimes' => $allowed_file_types ];
+	$image = wp_handle_upload( $_FILES['pb_front_image'], $overrides );
+	if ( ! empty( $image['error'] ) ) {
+		wp_die( $image['error'] );
+	}
+
+	list( $width, $height ) = getimagesize( $image['file'] );
+	if ( $width < 625 || $height < 625 ) {
+		$_SESSION['pb_notices'][] = sprintf( __( 'Your Web image (%1$s x %1$s) is too small. It should be 625px on the shortest side.', 'pressbooks' ), $width, $height );
+	}
+
+	$filesize = filesize( $image['file'] );
+	if ( $filesize > 2000000 ) {
+		$filesize_in_mb = \Pressbooks\Utility\format_bytes( $filesize );
+		$_SESSION['pb_notices'][] = sprintf( __( 'Your Web image (%s) is too big. It should be no more than 2MB.', 'pressbooks' ), $filesize_in_mb );
+	}
+
+	$old = get_post_meta( $pid, 'pb_front_image', false );
+	update_post_meta( $pid, 'pb_front_image', $image['url'] );
+
+	// Delete old images
+	foreach ( $old as $old_url ) {
+		$old_id = \Pressbooks\Image\attachment_id_from_url( $old_url );
+		if ( $old_id ) {
+			//wp_delete_attachment( $old_id, true );
+		}
+	}
+	// Insert new image, create thumbnails
+	$args = [
+		'post_mime_type' => $image['type'],
+		'post_title' => __( 'Web Image', 'pressbooks' ),
+		'post_content' => '',
+		'post_status' => 'inherit',
+		'post_name' => 'pb-front-image',
+	];
+	$id = wp_insert_attachment( $args, $image['file'], $pid );
+	// wp_update_attachment_metadata( $id, wp_generate_attachment_metadata( $id, $image['file'] ) );
 }
 
 
@@ -150,6 +208,7 @@ function add_meta_boxes() {
 	// Custom Image Upload
 
 	add_meta_box( 'covers', __( 'Cover Image', 'pressbooks' ), '\Pressbooks\Image\cover_image_box', 'metadata', 'normal', 'low' );
+	add_meta_box( 'fronts', __( 'Web Image', 'pressbooks' ), '\Pressbooks\Image\front_image_box', 'metadata', 'normal', 'low' );
 
 	// Book Metadata
 
@@ -719,6 +778,32 @@ function delete_cover_image() {
 		}
 
 		update_post_meta( $pid, 'pb_cover_image', \Pressbooks\Image\default_cover_url() );
+		\Pressbooks\Book::deleteBookObjectCache();
+	}
+
+	// @see http://codex.wordpress.org/AJAX_in_Plugins#Error_Return_Values
+	// Will append 0 to returned json string if we don't die()
+	die();
+}
+
+
+/**
+ * WP_Ajax hook for pb_delete_cover_image
+ */
+function delete_front_image() {
+
+	if ( current_user_can_for_blog( get_current_blog_id(), 'upload_files' ) && check_ajax_referer( 'pb-delete-front-image' ) ) {
+
+		$image_url = $_POST['filename'];
+		$pid = $_POST['pid'];
+
+		// Delete old images
+		$old_id = \Pressbooks\Image\attachment_id_from_url( $image_url );
+		if ( $old_id ) {
+			wp_delete_attachment( $old_id, true );
+		}
+
+		update_post_meta( $pid, 'pb_front_image', \Pressbooks\Image\default_cover_url() );
 		\Pressbooks\Book::deleteBookObjectCache();
 	}
 

@@ -160,6 +160,7 @@ if ( $is_book ) {
 	add_action( 'admin_enqueue_scripts', '\Pressbooks\Admin\Metaboxes\add_metadata_styles' );
 	add_action( 'save_post', '\Pressbooks\Book::consolidatePost', 10, 2 );
 	add_action( 'save_post_metadata', '\Pressbooks\Admin\Metaboxes\upload_cover_image', 10, 2 );
+	add_action( 'save_post_metadata', '\Pressbooks\Admin\Metaboxes\upload_front_image', 10, 2 );
 	add_action( 'save_post_metadata', '\Pressbooks\Admin\Metaboxes\add_required_data', 20, 2 );
 //	add_action( 'save_post_metadata', '\Pressbooks\Admin\Metaboxes\save_subject_metadata', 10, 2 );
 	add_action( 'added_post_meta', '\Pressbooks\Admin\Metaboxes\title_update', 10, 4 );
@@ -195,6 +196,8 @@ add_action( 'wp_ajax_pb_update_show_title_options', '\Pressbooks\Book::updateSho
 add_action( 'wp_ajax_pb_update_global_privacy_options', '\Pressbooks\Book::updateGlobalPrivacyOptions' );
 // Book Information Page
 add_action( 'wp_ajax_pb_delete_cover_image', '\Pressbooks\Admin\Metaboxes\delete_cover_image' );
+add_action( 'wp_ajax_pb_delete_front_image', '\Pressbooks\Admin\Metaboxes\delete_front_image' );
+
 // Convert MS Word Footnotes
 add_action( 'wp_ajax_pb_ftnref_convert', '\Pressbooks\Shortcodes\Footnotes\Footnotes::convertWordFootnotes' );
 // User Catalog Page
