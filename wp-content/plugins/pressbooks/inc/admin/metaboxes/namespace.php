@@ -661,7 +661,7 @@ function add_meta_boxes() {
 
 	// Back Matter Metadata
 
-	x_add_metadata_group(
+	/*x_add_metadata_group(
 		'back-matter-metadata', 'back-matter', [
 		'label' => __( 'Back Matter Metadata', 'pressbooks' ),
 		]
@@ -695,7 +695,7 @@ function add_meta_boxes() {
 		'values' => [ '' => __( 'Select a License', 'pressbooks' ) ] + $licenses,
 		'label' => __( 'Back Matter Copyright License (overrides book license on this page)', 'pressbooks' ),
 		]
-	);
+	);*/
 
 	// Part Metadata
 
