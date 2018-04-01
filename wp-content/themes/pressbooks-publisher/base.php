@@ -74,6 +74,7 @@ if ( strpos( Wrapper\template_path(), 'plugins/pressbooks/templates' ) ) {
       font-size: 14px !important;
     }
     .jumbotron {
+      margin-top: 40px;
       background-color: #dcdcdc;
       padding-bottom: 5px;
       padding-top: 25px;
