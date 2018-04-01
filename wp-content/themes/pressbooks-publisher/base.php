@@ -14,6 +14,7 @@ if ( strpos( Wrapper\template_path(), 'plugins/pressbooks/templates' ) ) {
   <?php get_template_part('templates/head'); ?>
   
   <body>
+    <!--
     <nav class="navbar navbar-default navbar-static-top">
       <div class="container">
         <div class="navbar-header">
@@ -31,9 +32,10 @@ if ( strpos( Wrapper\template_path(), 'plugins/pressbooks/templates' ) ) {
               <img src="wp-content/uploads/assets/images/uc3m.png"/>
             </a>
           </ul>
-        </div><!--/.nav-collapse -->
+        </div>
       </div>
     </nav>
+    -->
 
     <div class="container">
       <div class="jumbotron">
