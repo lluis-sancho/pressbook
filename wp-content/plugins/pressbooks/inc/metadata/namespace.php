@@ -19,6 +19,7 @@ function get_seo_meta_elements() {
 		'keywords' => 'pb_keywords_tags',
 		'publisher' => 'pb_publisher',
 		'book_color' => 'pb_book_color',
+		'dossier' => 'pb_dossier',
 	];
 	$html = "<meta name='application-name' content='Pressbooks'>\n";
 	$metadata = Book::getBookInformation();
@@ -57,6 +58,7 @@ function get_microdata_elements() {
 		'keywords' => 'pb_keywords_tags',
 		'publisher' => 'pb_publisher',
 		'book_color' => 'pb_book_color',
+		'dossier' => 'pb_dossier',
 		'isBasedOn' => 'pb_is_based_on',
 	];
 	$metadata = Book::getBookInformation();
@@ -278,6 +280,13 @@ function book_information_to_schema( $book_information ) {
 			];
 		}
 
+		if ( isset( $book_information['pb_dossier'] ) ) {
+			$book_schema['publisher'] = [
+			 '@type' => 'Organization',
+			 'name' => $book_information['pb_dossier'],
+			];
+		}
+
 		if ( isset( $book_information['pb_publisher'] ) ) {
 			$book_schema['publisher'] = [
 			 '@type' => 'Organization',
@@ -434,6 +443,10 @@ function schema_to_book_information( $book_schema ) {
 		$book_information['pb_book_color'] = $book_schema['publisher']['book_color'];
 	}
 
+	if ( isset( $book_schema['dossier'] ) ) {
+		$book_information['pb_dossier'] = $book_schema['publisher']['dossier'];
+	}
+
 	if ( isset( $book_schema['publisher'] ) ) {
 		$book_information['pb_publisher'] = $book_schema['publisher']['name'];
 
@@ -561,6 +574,13 @@ function section_information_to_schema( $section_information, $book_information 
 			$section_schema['audience'] = [
 			 '@type' => 'Organization',
 			 'name' => $book_information['pb_book_color'],
+			];
+		}
+
+		if ( isset( $book_information['pb_dossier'] ) ) {
+			$section_schema['audience'] = [
+			 '@type' => 'Organization',
+			 'name' => $book_information['pb_dossier'],
 			];
 		}
 

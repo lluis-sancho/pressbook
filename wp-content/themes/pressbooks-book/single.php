@@ -72,8 +72,12 @@
 	(function( $ ) {
     // Add Color Picker to all inputs that have 'color-field' class
     $(function() {
-    	console.log("change color");
 			$('.nav-container nav').css('background', "<?php echo pb_get_book_information()["pb_book_color"] ?>");
+			$('#tblcontents, #bb-nav-next, #bb-nav-prev').css('color', "<?php echo pb_get_book_information()["pb_book_color"] ?>");
+			$('#tblcontents, #bb-nav-next, #bb-nav-prev').css('border', "1px solid <?php echo pb_get_book_information()["pb_book_color"] ?>");
+			
+			$('#tblcontents:after').css('background', "1px solid <?php echo pb_get_book_information()["pb_book_color"] ?>");
+			$('#tblcontents:after').css('box-shadow', "-4px 0 <?php echo pb_get_book_information()["pb_book_color"] ?>, 4px 0 <?php echo pb_get_book_information()["pb_book_color"] ?>");
 
     });
      

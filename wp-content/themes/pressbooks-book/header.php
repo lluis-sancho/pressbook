@@ -136,6 +136,7 @@ if ( wp_title( '', false ) !== '' ) { print ' id="' . str_replace( ' ', '', strt
 						<!-- Pop out TOC only on READ pages -->
 		<?php if ( is_single() ) : ?>
 		<?php $book = pb_get_book_structure(); ?>
+		<?php //print_r($book); ?>
 						<?php foreach ( $book['front-matter'] as $fm ) : ?>
 						<?php if ( $fm['post_status'] !== 'publish' ) {
 							if ( ! current_user_can_for_blog( $blog_id, 'read_private_posts' ) ) {
@@ -165,6 +166,11 @@ if ( wp_title( '', false ) !== '' ) { print ' id="' . str_replace( ' ', '', strt
 				<?php echo $part['post_title']; ?>
 				<?php if ( $part['has_post_content'] ) { ?></a><?php } ?>
 				<?php } ?></li>
+						
+
+						
+
+
 						<?php foreach ( $part['chapters'] as $chapter ) : ?>
 							<?php if ( $chapter['post_status'] !== 'publish' ) {
 								if ( ! current_user_can_for_blog( $blog_id, 'read_private_posts' ) ) {
@@ -189,6 +195,11 @@ if ( wp_title( '', false ) !== '' ) { print ' id="' . str_replace( ' ', '', strt
 } ?>
 							</li>
 						<?php endforeach; ?>
+
+
+
+
+
 				<?php endforeach; ?>
 						<?php foreach ( $book['back-matter'] as $bm ) : ?>
 						<?php if ( $bm['post_status'] !== 'publish' ) {
