@@ -136,6 +136,7 @@ if ( wp_title( '', false ) !== '' ) { print ' id="' . str_replace( ' ', '', strt
 						<!-- Pop out TOC only on READ pages -->
 		<?php if ( is_single() ) : ?>
 		<?php $book = pb_get_book_structure(); ?>
+		<?php //print_r($book); ?>
 						<?php foreach ( $book['front-matter'] as $fm ) : ?>
 						<?php if ( $fm['post_status'] !== 'publish' ) {
 							if ( ! current_user_can_for_blog( $blog_id, 'read_private_posts' ) ) {
@@ -160,11 +161,14 @@ if ( wp_title( '', false ) !== '' ) { print ' id="' . str_replace( ' ', '', strt
 						</li>
 						<?php endforeach; ?>
 				<?php foreach ( $book['part'] as $part ) :?>
-				<li><?php if ( count( $book['part'] ) > 1 && get_post_meta( $part['ID'], 'pb_part_invisible', true ) !== 'on' ) { ?>
-				<?php if ( $part['has_post_content'] ) { ?><a href="#item1"><?php } ?>
-				<?php echo $part['post_title']; ?>
-				<?php if ( $part['has_post_content'] ) { ?></a><?php } ?>
-				<?php } ?></li>
+				<li class="capitulo">
+					<a href="#item1"><?php echo $part['post_title'] ?></a>
+				</li>
+						
+
+						
+
+
 						<?php foreach ( $part['chapters'] as $chapter ) : ?>
 							<?php if ( $chapter['post_status'] !== 'publish' ) {
 								if ( ! current_user_can_for_blog( $blog_id, 'read_private_posts' ) ) {
@@ -176,7 +180,7 @@ if ( wp_title( '', false ) !== '' ) { print ' id="' . str_replace( ' ', '', strt
 									}
 								}
 } ?>
-							<li class="chapter <?php echo pb_get_section_type( get_post( $chapter['ID'] ) );?>"><a href="#item1">
+							<li class="chapter ocultar <?php echo pb_get_section_type( get_post( $chapter['ID'] ) );?>"><a href="#item1">
 								<?php echo pb_strip_br( $chapter['post_title'] ); ?></a>
 				<?php if ( pb_should_parse_subsections() ) {
 					$sections = pb_get_subsections( $chapter['ID'] );
@@ -189,6 +193,11 @@ if ( wp_title( '', false ) !== '' ) { print ' id="' . str_replace( ' ', '', strt
 } ?>
 							</li>
 						<?php endforeach; ?>
+
+
+
+
+
 				<?php endforeach; ?>
 						<?php foreach ( $book['back-matter'] as $bm ) : ?>
 						<?php if ( $bm['post_status'] !== 'publish' ) {
@@ -219,3 +228,36 @@ if ( wp_title( '', false ) !== '' ) { print ' id="' . str_replace( ' ', '', strt
 
 		</div>
 		<?php endif; ?>
+
+
+		<style type="text/css">
+			.ocultar a {
+				display: none !important;
+			}
+
+			/*
+			.capitulo a {
+				color: blue;
+			}*/
+		
+			.menu-toc .menu-toc-current a, .menu-toc li a:hover {
+    		border-left: 10px solid <?php echo $metadata["pb_book_color"] ?>;
+    		color: <?php echo $metadata["pb_book_color"] ?>;
+			}
+
+			.menu-toc li a {
+		    border-left: 2px solid <?php echo $metadata["pb_book_color"] ?>;
+			}
+
+			.bb-custom-wrapper nav span:hover, .menu-button:hover, .bb-nav-close:hover {
+		    color: #fff;
+		    background: rgba(137, 137, 137, 0.45);
+			}
+
+			.menu-button:after {
+				background: rgb(137, 137, 137);
+				box-shadow:  -4px 0 rgb(137, 137, 137), 4px 0 rgb(137, 137, 137);
+			}
+		</style>
+
+

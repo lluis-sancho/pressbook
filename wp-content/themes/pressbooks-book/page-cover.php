@@ -45,6 +45,13 @@ if ( pb_is_public() ) :
           <a href="<?php global $first_chapter; echo $first_chapter; ?>" class="button">
             <i class="fa fa-book"></i>Leer libro
           </a>
+
+          <?php if ($metadata["pb_publication_url"]) { ?>
+            <a href="<?php echo $metadata["pb_publication_url"] ?>" target='_blank' class="button" style="margin-left: 10px;">
+              <i class="fa fa-download"></i>Descargar libro
+            </a>              
+          <?php } ?>
+
         </div>
       </div>
 

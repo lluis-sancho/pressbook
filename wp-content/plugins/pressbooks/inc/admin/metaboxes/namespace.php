@@ -300,6 +300,15 @@ function add_meta_boxes() {
 	);
 
 	x_add_metadata_field(
+		'pb_dossier', 'metadata', [
+		'group' => 'general-book-information',
+		'label' => __( 'Dossier', 'pressbooks' ),
+		'field_type' => 'checkbox',
+		'description' => __( 'Set dossier to true if this is a dossier.', 'pressbooks' ),
+		]
+	);
+
+	x_add_metadata_field(
 		'pb_publisher_city', 'metadata', [
 		'group' => 'general-book-information',
 		'label' => __( 'Publisher City', 'pressbooks' ),
@@ -313,6 +322,14 @@ function add_meta_boxes() {
 		'group' => 'general-book-information',
 		'label' => __( 'Publication Date', 'pressbooks' ),
 		//'description' => __( 'This is added to the metadata in your ebook.', 'pressbooks' ),
+		]
+	);
+
+	x_add_metadata_field(
+		'pb_publication_url', 'metadata', [
+		'group' => 'general-book-information',
+		'label' => __( 'Publication URL', 'pressbooks' ),
+		'description' => __( 'This is the external url to donwload the book.', 'pressbooks' ),
 		]
 	);
 
