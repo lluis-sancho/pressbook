@@ -325,6 +325,14 @@ function add_meta_boxes() {
 		]
 	);
 
+	x_add_metadata_field(
+		'pb_publication_url', 'metadata', [
+		'group' => 'general-book-information',
+		'label' => __( 'Publication URL', 'pressbooks' ),
+		'description' => __( 'This is the external url to donwload the book.', 'pressbooks' ),
+		]
+	);
+
 	if ( $show_expanded_metadata ) {
 		x_add_metadata_field(
 			'pb_onsale_date', 'metadata', [

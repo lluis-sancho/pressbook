@@ -1,3 +1,5 @@
+<!-- TODO[cmuino]: pagina de generacion de paginas -->
+
 
 		<?php if ( have_posts() ) { while ( have_posts() ) : the_post(); ?>
 		<?php get_header(); ?>
@@ -78,6 +80,9 @@
 			
 			$('#tblcontents:after').css('background', "1px solid <?php echo pb_get_book_information()["pb_book_color"] ?>");
 			$('#tblcontents:after').css('box-shadow', "-4px 0 <?php echo pb_get_book_information()["pb_book_color"] ?>, 4px 0 <?php echo pb_get_book_information()["pb_book_color"] ?>");
+
+
+			$("#tblcontents:hover").css('background', "<?php echo pb_get_book_information()["pb_book_color"] ?> !important");
 
     });
      

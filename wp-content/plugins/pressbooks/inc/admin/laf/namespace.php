@@ -367,7 +367,7 @@ function replace_menu_bar_branding( $wp_admin_bar ) {
 		[
 			'id' => 'wp-logo',
 			'title' => 'Tecmerin',
-			'href' => ( '/' ),
+			'href' => ( '/wp-admin' ),
 			/*'meta' => [
 				'title' => __( 'About Pressbooks', 'pressbooks' ),
 			],*/

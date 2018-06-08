@@ -322,6 +322,7 @@ class Metadata implements \JsonSerializable {
 				'Publisher' => 'pb_publisher',
 				'Book Color' => 'pb_book_color',
 				'Dossier' => 'pb_dossier',
+				'Publication URL' => 'pb_publication_url',
 				'Publication Date' => 'pb_publication_date',
 				'Publisher City' => 'pb_publisher_city',
 				'Cover Image' => 'pb_cover_image',
