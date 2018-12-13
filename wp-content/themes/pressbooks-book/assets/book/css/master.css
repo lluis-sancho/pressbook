@@ -6066,8 +6066,7 @@ blockquote {
 .scroller {
   padding: 10px 20% 10px 20%; }
 
-.js .book-content:before,
-.js .book-content:after {
+.js .book-content:before {
   content: '';
   position: absolute;
   top: 0;
@@ -6077,11 +6076,6 @@ blockquote {
   z-index: 100;
   pointer-events: none;
   background: linear-gradient(to bottom, white 0%, rgba(255, 255, 255, 0) 100%); }
-
-.js .book-content:after {
-  top: auto;
-  bottom: 0;
-  background: linear-gradient(to top, white 0%, rgba(255, 255, 255, 0) 100%); }
 
 .book-content h2 {
   font-weight: 300;
